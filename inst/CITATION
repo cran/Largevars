@@ -1,0 +1,14 @@
+citHeader("To cite Largevars in publications use:")
+
+bibentry(
+  key = "largevarspaper",
+  bibtype  = "Article",
+  title    = "Largevars: An R Package for Testing Large VARs for the Presence of Cointegration",
+  author   = c(person("Anna", "Bykhovskaya"), person("Vadim", "Gorin"), person("Eszter", "Kiss")),
+  journal  = "TBD",
+  year     = "2024",
+  volume   = " ",
+  number   = " ",
+  pages    = " ",
+  doi      =" "
+)
