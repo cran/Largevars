@@ -11,7 +11,8 @@ sim_function(
   k = 1,
   r = 1,
   fin_sample_corr = FALSE,
-  sim_num = 1000
+  sim_num = 1000,
+  seed = NULL
 )
 }
 \arguments{
@@ -28,6 +29,8 @@ sim_function(
 \item{fin_sample_corr}{A boolean variable indicating whether we wish to employ finite sample correction on our test statistics. The default value is fin_sample_corr = FALSE.}
 
 \item{sim_num}{The number of simulations that the function conducts for H0. The default value is sim_num = 1000.}
+
+\item{seed}{The random seed that a user can set for replicable simulation results. The default value is seed = NULL.}
 }
 \value{
 A list that contains the simulation values, the empirical percentage (realizations larger than the test statistic provided by the user) and a histogram.
@@ -36,5 +39,5 @@ A list that contains the simulation values, the empirical percentage (realizatio
 Runs a simulation on the H0 for the Bykhovskaya-Gorin test for cointegration and returns an empirical p-value. Paper can be found at: https://doi.org/10.48550/arXiv.2202.07150
 }
 \examples{
-sim_function(N=90, tau=501, stat_value=-0.27,k=1,r=1,sim_num=30)
+sim_function(N=90, tau=501, stat_value=-0.27,k=1,r=1,sim_num=30, seed = 0)
 }

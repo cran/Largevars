@@ -4,7 +4,7 @@
 \alias{check_input_simfun}
 \title{Input checker for simfun function}
 \usage{
-check_input_simfun(N, tau, stat_value, k, r, fin_sample_corr, sim_num)
+check_input_simfun(N, tau, stat_value, k, r, fin_sample_corr, sim_num, seed)
 }
 \arguments{
 \item{N}{a number representing the number of time series we want to simulate in the system}

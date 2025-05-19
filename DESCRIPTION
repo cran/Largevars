@@ -1,7 +1,7 @@
 Package: Largevars
 Type: Package
 Title: Testing Large VARs for the Presence of Cointegration
-Version: 1.0.2
+Version: 1.0.3
 Authors@R: 
   c(person(given = "Anna", family = "Bykhovskaya", role = "aut", email = "anna.bykhovskaya@duke.edu"),
     person(given = "Vadim", family = "Gorin", role = "aut", email = "vadicgor@gmail.com"),
@@ -19,9 +19,9 @@ Config/testthat/edition: 3
 License: MIT + file LICENSE
 URL: https://github.com/eszter-kiss/Largevars
 NeedsCompilation: no
-Packaged: 2024-10-28 16:09:33 UTC; eszterkiss
+Packaged: 2025-05-18 23:53:25 UTC; ekiss
 Author: Anna Bykhovskaya [aut],
   Vadim Gorin [aut],
   Eszter Kiss [cre, aut]
 Repository: CRAN
-Date/Publication: 2024-10-31 13:40:41 UTC
+Date/Publication: 2025-05-19 02:10:02 UTC

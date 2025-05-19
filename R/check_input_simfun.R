@@ -10,61 +10,56 @@
 #' @param sim_num The number of simulation we wish to run.
 #' @returns Nothing (or warning message) if all inputs are correct, and an error message otherwise.
 #' @keywords internal
-check_input_simfun <- function(N,tau,stat_value,k,r,fin_sample_corr,sim_num){
+check_input_simfun <- function(N, tau, stat_value, k, r, fin_sample_corr, sim_num, seed){
 
-  if(is.null(N)){ # (default is NULL if nothing is input)
-    stop("`N` is a mandatory input")
+  # more obvious input errors
+  if (is.null(N) || !is.numeric(N) || length(N) != 1 || N %% 1 != 0 || N <= 0) {
+    stop("`N` must be a single positive integer.")
+  }
 
-  }else if((is.numeric(N)==FALSE)|(length(N) == 1)==FALSE){
-    stop("`N` must be a number.")
+  if (is.null(tau) || !is.numeric(tau) || length(tau) != 1 ||
+      tau %% 1 != 0 || tau <= 0) {
+    stop("`tau` must be a single positive integer.")
+  }
 
-  }else if(((N%%1==0)==FALSE)|((N>0)==FALSE)){
-    stop("`N` must be a positive integer.")
+  if (is.null(stat_value) || !is.numeric(stat_value) || length(stat_value) != 1) {
+    stop("`stat_value` must be a single numeric value.")
+  }
 
-  }else if(is.null(tau)){ # (default is NULL if nothing is input)
-    stop("`tau` is a mandatory input")
+  if (!is.numeric(k) || length(k) != 1 || k %% 1 != 0 || k <= 0) {
+    stop("`k` must be a single positive integer.")
+  }
 
-  }else if((is.numeric(tau)==FALSE)|(length(tau) == 1)==FALSE){
-    stop("`tau` must be a number.")
+  if (!is.numeric(r) || length(r) != 1 || r %% 1 != 0 || r <= 0) {
+    stop("`r` must be a single positive integer.")
+  }
 
-  }else if(((tau%%1==0)==FALSE)|((tau>0)==FALSE)){
-    stop("`tau` must be a positive integer.")
+  if (!is.numeric(sim_num) || length(sim_num) != 1 ||
+      sim_num %% 1 != 0 || sim_num <= 0) {
+    stop("`sim_num` must be a single positive integer.")
+  }
 
-  }else if(is.null(stat_value)){ # (default is NULL if nothing is input)
-    stop("`stat_value` is a mandatory input")
+  if (!is.logical(fin_sample_corr) || length(fin_sample_corr) != 1) {
+    stop("`fin_sample_corr` must be a single boolean value (TRUE or FALSE).")
+  }
 
-  }else if((is.numeric(stat_value)==FALSE)|(length(stat_value) == 1)==FALSE){
-    stop("`stat_value` must be a number.")
 
-  }else if((is.numeric(k)==FALSE)|(length(k) == 1)==FALSE){
-    stop("`k` must be a number.")
+  if (!is.null(seed) && (!is.numeric(seed) || length(seed) != 1 ||
+                         seed %% 1 != 0 || seed < 0)) {
+    stop("`seed` must be a single non-negative integer if given.")
+  }
 
-  }else if(((k%%1==0)==FALSE)|((k>0)==FALSE)){
-    stop("`k` must be a positive integer.")
 
-  }else if  ( k >= ((tau-1)/N)-1){
+  # less obvious errors
+  if  ( k >= ((tau - 1)/N) - 1){
     stop("`k` too large, check dim requirements")
+  }
 
-
-  }else if((is.numeric(r)==FALSE)|(length(r) == 1)==FALSE){
-    stop("`r` must be a number.")
-
-  }else if(((r%%1==0)==FALSE)|((r>0)==FALSE)){
-    stop("`r` must be a positive integer.")
-
-  }else if  ( r>N){
+  if  ( r > N){
     stop("`r` must be less than or equal to the number of variables in your dataset.")
+  }
 
-  }else if((is.numeric(sim_num)==FALSE)|(length(sim_num) == 1)==FALSE){
-    stop("`sim_num` must be a number.")
-
-  }else if(((sim_num%%1==0)==FALSE)|((sim_num>0)==FALSE)){
-    stop("`sim_num` must be a positive integer.")
-
-  }else if  ( (isTRUE(fin_sample_corr)==FALSE) & (isFALSE(fin_sample_corr)==FALSE) ){
-    stop("`fin_sample_corr` must be a boolean.")
-
-  } else if (sim_num>500){
+  if (sim_num > 500){
     warning("Simulation may run for several minutes")
   }
 }

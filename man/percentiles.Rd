@@ -8,7 +8,7 @@
 A data frame with 99 rows and 11 variables:
 }
 \source{
-Calculated through own simulations (see details in Section 4 of vignette).
+Calculated through own simulations (see details in vignette).
 }
 \description{
 A data frame containing the simulated quantiles for the test statistic used in
